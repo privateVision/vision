@@ -2,6 +2,37 @@
 
 #### 1. 项目结构
 ```
+.
+├── bin
+│   └── install-ctl.sh                                                      # 部署脚本
+├── etc                                                                     # 配置文件
+│   └── config.yaml
+├── README.md
+├── site-packages                                                           # 依赖模块说明
+│   └── requerments.txt
+└── vision                                                                  # 项目根目录
+    ├── application.py                                                      # 应用程序入口
+    ├── backend                                                             # 后台执行程序
+    │   └── __init__.py
+    ├── handlers                                                            # 句柄
+    │   └── __init__.py
+    ├── __init__.py
+    ├── public                                                              # 公共函数
+    │   └── __init__.py
+    ├── server.py                                                           # 服务启动
+    ├── settings.py
+    ├── static                                                              # 静态文件
+    │   └── __init__.py
+    ├── temp
+    │   └── __init__.py
+    ├── template                                                            # 模板文件
+    │   └── __init__.py
+    ├── test                                                                # 单元测试脚本
+    │   └── __init__.py
+    └── utils                                                               # 第三方扩展
+        ├── __init__.py
+        └── session.py
+
 ```
 
 #### 2. 安装路径及配置
