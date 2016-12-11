@@ -1,0 +1,83 @@
+LOG:  database system was shut down at 2016-10-16 10:53:09 CST
+LOG:  MultiXact member wraparound protections are now enabled
+LOG:  database system is ready to accept connections
+LOG:  autovacuum launcher started
+LOG:  database system was shut down at 2016-10-31 19:17:55 CST
+LOG:  MultiXact member wraparound protections are now enabled
+LOG:  database system is ready to accept connections
+LOG:  autovacuum launcher started
+LOG:  unexpected EOF on client connection with an open transaction
+LOG:  unexpected EOF on client connection with an open transaction
+LOG:  unexpected EOF on client connection with an open transaction
+ERROR:  syntax error at or near "admin" at character 30
+STATEMENT:  grant allprivileges on uline admin to uline;
+ERROR:  unrecognized privilege type "allprivileges"
+STATEMENT:  grant allprivileges on database uline to uline;
+ERROR:  permission denied for relation dt_user
+STATEMENT:  select * from dt_user limit 1;
+ERROR:  unrecognized configuration parameter "privileges"
+STATEMENT:  show privileges;
+ERROR:  syntax error at or near "all" at character 11
+STATEMENT:  show
+	show all privileges;
+ERROR:  unrecognized configuration parameter "privileges"
+STATEMENT:  show privileges;
+ERROR:  permission denied for relation dt_user
+STATEMENT:  select * from dt_user;
+ERROR:  relation "uline" does not exist
+STATEMENT:  grant all privileges on uline to uline;
+ERROR:  relation "uline" does not exist
+STATEMENT:  grant all privileges on uline to uline;
+WARNING:  no privileges were granted for "uline"
+ERROR:  database "uline" is being accessed by other users
+DETAIL:  There is 1 other session using the database.
+STATEMENT:  drop database uline;
+LOG:  received fast shutdown request
+LOG:  aborting any active transactions
+FATAL:  terminating connection due to administrator command
+FATAL:  terminating connection due to administrator command
+FATAL:  terminating connection due to administrator command
+LOG:  autovacuum launcher shutting down
+LOG:  shutting down
+LOG:  database system is shut down
+LOG:  database system was interrupted; last known up at 2016-11-19 14:06:55 CST
+LOG:  database system was not properly shut down; automatic recovery in progress
+LOG:  invalid record length at 0/41AD37A8
+LOG:  redo is not required
+LOG:  MultiXact member wraparound protections are now enabled
+LOG:  database system is ready to accept connections
+LOG:  autovacuum launcher started
+ERROR:  duplicate key value violates unique constraint "mch_user_email_uindex"
+DETAIL:  Key (email)=(1527813881@qq.com) already exists.
+STATEMENT:  
+	          INSERT INTO mch_user(
+		      mch_id, mch_name, email, password, wx_sub_mch_id, mch_pay_key, status, create_at, update_at)
+		      VALUES (100000004151, '123123', '1527813881@qq.com', '$2b$12$jDxCKTz7GVIuaUfKulOx4ezK.2Dt72eeowb9LC0Z3KeZCoNW5QtrC', '16624660', '8ce8ec82832ddb0bda2e3db25b4b295d', 1, '2016-11-21T23:29:57.051871'::timestamp, '2016-11-21T23:29:57.051871'::timestamp);
+ERROR:  syntax error at or near "ROWS" at character 547
+STATEMENT:  SELECT mch_id,
+	               mch_name,
+	               activated_status,
+	               auth_status,
+	               COUNT(*) OVER () AS total
+	            FROM mch_inlet_info
+	            WHERE dt_id=10000000830
+	              AND (activated_status=NULL OR NULL IS NULL )
+	              AND (auth_status=NULL OR NULL IS NULL )
+	              AND (mch_name LIKE NULL OR NULL IS NULL )
+	              AND (create_at BETWEEN NULL::TIMESTAMP AND NULL::TIMESTAMP OR NULL IS NULL OR NULL IS NULL )
+	            ORDER BY create_at desc
+	            OFFSET  -10 ROWS FETCH NEXT 10 ROWS ONLY
+ERROR:  syntax error at or near "ROWS" at character 547
+STATEMENT:  SELECT mch_id,
+	               mch_name,
+	               activated_status,
+	               auth_status,
+	               COUNT(*) OVER () AS total
+	            FROM mch_inlet_info
+	            WHERE dt_id=10000000830
+	              AND (activated_status=NULL OR NULL IS NULL )
+	              AND (auth_status=NULL OR NULL IS NULL )
+	              AND (mch_name LIKE NULL OR NULL IS NULL )
+	              AND (create_at BETWEEN NULL::TIMESTAMP AND NULL::TIMESTAMP OR NULL IS NULL OR NULL IS NULL )
+	            ORDER BY create_at desc
+	            OFFSET  -20 ROWS FETCH NEXT 10 ROWS ONLY
