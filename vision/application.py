@@ -4,7 +4,7 @@ import tornado.web
 import redis
 
 from handlers.urls import urls
-from settings import redis_db, redis_host, redis_port, src, server_debug, env
+from settings import redis_db, redis_host, redis_port, server_debug
 from utils import session
 from handlers import baseHandlers as base
 
@@ -20,8 +20,7 @@ class Application(tornado.web.Application):
             cookie_secret='1ks1tuCW3x0lU14H3m0CV39Q288rVkc9113ieivhYi610E0i4fRhB6u5VhiZRu72',
             session_secret="3cdcb1f00803b6e78ab50b466a40b9977db396840c28307f428b25e2277f1bcc",
             session_timeout=60 * 60,
-            # xsrf_cookies=True if env == 'prod' else False,
-            xsrf_cookies=True,
+            xsrf_cookies=server_debug,
             store_options={
                 'redis_host': redis_host,
                 'redis_port': redis_port,
@@ -29,7 +28,6 @@ class Application(tornado.web.Application):
             },
         )
         tornado.web.Application.__init__(self, handlers=urls, **settings)
-        if src == 'app' or src == 'adm':
-            self.client = redis.Redis(host=redis_host, port=redis_port, db=redis_db)
-            self.session_manager = session.SessionManager(settings["session_secret"],
-                                                          settings["store_options"], settings["session_timeout"])
+        self.client = redis.Redis(host=redis_host, port=redis_port, db=redis_db)
+        self.session_manager = session.SessionManager(settings["session_secret"],
+                                                      settings["store_options"], settings["session_timeout"])

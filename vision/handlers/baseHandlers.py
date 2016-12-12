@@ -5,11 +5,7 @@ import traceback
 from tornado import escape
 from tornado.escape import utf8
 from tornado.util import unicode_type
-from public import common
-from public.baseDB import DbClient
-from public.baseTradeDB import TradeDbClient
 from public import log
-from public.constants import *
 from utils import session
 
 # Handlers 共享的 Handler 方法。API 使用不正确错误处理
@@ -44,9 +40,9 @@ class BaseHandler(tornado.web.RequestHandler):
             for line in traceback.format_exception(*kwargs["exc_info"]):
                 log.exception.info(line)
         if status_code == 500:
-            self.render('common/error_500.html')
+            self.render('common/500.html')
         elif status_code == 404:
-            self.render('common/error_404.html')
+            self.render('common/404.html')
         else:
             self.write(str(status_code))
             self.finish()
@@ -87,9 +83,9 @@ class ImageHandler(tornado.web.StaticFileHandler):
 
     def write_error(self, status_code, **kwargs):
         if status_code == 500:
-            self.render('common/error_500.html')
+            self.render('common/500.html')
         elif status_code == 404:
-            self.render('common/error_404.html')
+            self.render('common/404.html')
         else:
             self.write(str(status_code))
             self.finish()
@@ -110,4 +106,4 @@ class ErrorLinkHandler(BaseHandler):
     """docstring for ErrorLinkHandler"""
 
     def get(self):
-        self.render('common/error_404.html')
+        self.render('common/404.html')
