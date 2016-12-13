@@ -2,8 +2,8 @@ mysql:
     host: localhost
     port: 5432
     db: vision
-    user: root
-    password: '123456'
+    user: vision
+    password: 'vision'
 
 redis:
     # redis库，默认为0
