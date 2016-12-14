@@ -39,6 +39,9 @@ port = dbConfig.get('port')
 user = dbConfig.get('user')
 charset = 'utf8'
 
+# sqlalchemy_db = "postgresql+psycopg2://" + user + ":" + passwd + "@" + host + "/" + db
+sqlalchemy_db = "postgresql+psycopg2://{0}:{1}@{2}/{3}" .format(user, passwd, host, db)
+
 redis_db = rdbConfig.get('db')
 redis_host = rdbConfig.get('host')
 redis_port = rdbConfig.get('port')

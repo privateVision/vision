@@ -1,12 +1,14 @@
 # -*- coding:utf-8 -*-
 import os
-import tornado.web
-import redis
 
+import redis
+import tornado.web
+
+from handlers import baseHandlers as base
 from handlers.urls import urls
 from settings import redis_db, redis_host, redis_port, server_debug
 from utils import session
-from handlers import baseHandlers as base
+from utils.database import init_db, session_scope
 
 
 class Application(tornado.web.Application):
@@ -31,3 +33,5 @@ class Application(tornado.web.Application):
         self.client = redis.Redis(host=redis_host, port=redis_port, db=redis_db)
         self.session_manager = session.SessionManager(settings["session_secret"],
                                                       settings["store_options"], settings["session_timeout"])
+        init_db()
+        self.db = session_scope()
