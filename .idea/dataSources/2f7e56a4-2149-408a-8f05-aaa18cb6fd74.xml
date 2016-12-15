@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="PostgreSQL - vision@localhost">
+  <database-model serializer="dbm" rdbms="POSTGRES" format-version="2.6">
+    <database id="1" name="vision">
+      <object-id>104365</object-id>
+      <visible>1</visible>
+    </database>
+    <database id="2" name="postgres">
+      <object-id>12641</object-id>
+    </database>
+    <database id="3" name="uline_trade">
+      <object-id>87628</object-id>
+    </database>
+    <database id="4" name="uline">
+      <object-id>104389</object-id>
+    </database>
+    <schema id="5" parent="1" name="public">
+      <object-id>2200</object-id>
+      <visible>1</visible>
+      <introspection-state-number>42160</introspection-state-number>
+      <introspection-timestamp>2016-12-15.19:18:53.458</introspection-timestamp>
+    </schema>
+    <schema id="6" parent="1" name="pg_catalog">
+      <object-id>11</object-id>
+    </schema>
+    <schema id="7" parent="1" name="pg_toast">
+      <object-id>99</object-id>
+    </schema>
+    <schema id="8" parent="1" name="pg_temp_1">
+      <object-id>11816</object-id>
+    </schema>
+    <schema id="9" parent="1" name="pg_toast_temp_1">
+      <object-id>11817</object-id>
+    </schema>
+    <schema id="10" parent="1" name="information_schema">
+      <object-id>12349</object-id>
+    </schema>
+    <sequence id="11" parent="5" name="tb_user_id_seq">
+      <object-id>104703</object-id>
+      <state-number>42155</state-number>
+      <next-value>1000</next-value>
+    </sequence>
+    <sequence id="12" parent="5" name="tb_user_info_id_seq">
+      <object-id>104714</object-id>
+      <state-number>42159</state-number>
+      <next-value>100000</next-value>
+    </sequence>
+    <table id="13" parent="5" name="user">
+      <object-id>104705</object-id>
+      <state-number>42156</state-number>
+    </table>
+    <table id="14" parent="5" name="user_info">
+      <object-id>104716</object-id>
+      <state-number>42160</state-number>
+    </table>
+    <column id="15" parent="13" name="id">
+      <state-number>42156</state-number>
+      <mandatory>1</mandatory>
+      <data-type>integer|0</data-type>
+    </column>
+    <column id="16" parent="13" name="name">
+      <state-number>42156</state-number>
+      <mandatory>1</mandatory>
+      <data-type>varchar(64)|0</data-type>
+    </column>
+    <column id="17" parent="13" name="email">
+      <state-number>42156</state-number>
+      <mandatory>1</mandatory>
+      <data-type>varchar(64)|0</data-type>
+    </column>
+    <column id="18" parent="13" name="password">
+      <state-number>42156</state-number>
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="19" parent="13" name="create_at">
+      <state-number>42156</state-number>
+      <mandatory>1</mandatory>
+      <data-type>timestamp|0</data-type>
+      <default-expression>now()</default-expression>
+    </column>
+    <column id="20" parent="13" name="update_at">
+      <state-number>42156</state-number>
+      <mandatory>1</mandatory>
+      <data-type>timestamp|0</data-type>
+      <default-expression>now()</default-expression>
+    </column>
+    <index id="21" parent="13" name="user_index">
+      <object-id>104712</object-id>
+      <columns>id</columns>
+      <desc-columns></desc-columns>
+      <unique>1</unique>
+    </index>
+    <index id="22" parent="13" name="user_pkey">
+      <object-id>104710</object-id>
+      <columns>id</columns>
+      <desc-columns></desc-columns>
+      <unique>1</unique>
+    </index>
+    <index id="23" parent="13" name="user_email_uindex">
+      <object-id>104713</object-id>
+      <columns>email</columns>
+      <desc-columns></desc-columns>
+      <unique>1</unique>
+    </index>
+    <key id="24" parent="13" name="user_pkey">
+      <object-id>104711</object-id>
+      <columns>id</columns>
+      <underlying-index>user_pkey</underlying-index>
+      <primary>1</primary>
+    </key>
+    <column id="25" parent="14" name="user_id">
+      <state-number>42160</state-number>
+      <mandatory>1</mandatory>
+      <data-type>integer|0</data-type>
+    </column>
+    <index id="26" parent="14" name="user_info_pkey">
+      <object-id>104719</object-id>
+      <columns>user_id</columns>
+      <desc-columns></desc-columns>
+      <unique>1</unique>
+    </index>
+    <key id="27" parent="14" name="user_info_pkey">
+      <object-id>104720</object-id>
+      <columns>user_id</columns>
+      <underlying-index>user_info_pkey</underlying-index>
+      <primary>1</primary>
+    </key>
+  </database-model>
+</dataSource>
