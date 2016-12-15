@@ -13,6 +13,7 @@ class BaseHandler(tornado.web.RequestHandler):
     def __init__(self, *args, **kwargs):
         super(BaseHandler, self).__init__(*args, **kwargs)
         self.session = session.Session(self.application.session_manager, self)
+        self.db = self.application.db
 
     def initialize(self):
         self.add_header("Access-Control-Allow-Origin", "*")
@@ -46,35 +47,6 @@ class BaseHandler(tornado.web.RequestHandler):
         else:
             self.write(str(status_code))
             self.finish()
-
-    def get_client_ip(self):
-        try:
-            real_ip = self.request.META['HTTP_X_FORWARDED_FOR']
-            regip = real_ip.split(",")[0]
-        except:
-            try:
-                regip = self.request.META['REMOTE_ADDR']
-            except:
-                regip = ""
-        return regip
-
-    def get_navigate_html(self, counts=0, pagesize=10):
-        # 分页处理
-        pageindex = int(self.get_argument("p", 1))
-        page_number = 0
-        if counts > 0:
-            if counts % pagesize == 0:
-                page_number = counts / pagesize
-            else:
-                page_number = counts / pagesize + 1
-        is_pre = False
-        is_next = False
-        if page_number > 1 and pageindex > 1:
-            is_pre = True
-        if page_number > 1 and pageindex < page_number:
-            is_next = True
-        return self.render_string("common/navigate.html", pageindex=pageindex, page_number=page_number, is_pre=is_pre,
-                                  is_next=is_next, counts=counts)
 
 
 # 图片 - 静态文件读取加查找文件路径错误处理
