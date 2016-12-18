@@ -15,7 +15,12 @@ fileConfig(config.config_file_name)
 # for 'autogenerate' support
 # from myapp import mymodel
 # target_metadata = mymodel.Base.metadata
-target_metadata = None
+# target_metadata = None
+import os
+import sys
+sys.path.insert(0, os.path.realpath("./vision"))
+from model.vision import user
+target_metadata = user.BaseModel.metadata
 
 # other values from the config, defined by the needs of env.py,
 # can be acquired:

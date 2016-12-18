@@ -8,6 +8,7 @@ class User(BaseModel):
     name = Column(String(64), nullable=False)
     email = Column(String(64), nullable=False)
     password = Column(String(255), nullable=False)
+    token = Column(String(128), nullable=False)
     create_at = Column(DateTime, nullable=False, server_default=text("now()"))
     update_at = Column(DateTime, nullable=False, server_default=text("now()"))
 
