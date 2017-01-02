@@ -1,56 +1,37 @@
-# -*- coding:utf-8 -*-
-from public.config import Config
-from tornado.options import define, options
+# -*- coding: utf-8 -*-
+# @Time    : 2017-01-03 00:50:19
+# @Author  : xiezhigang
+# @Site    : vision
+# @File    : settings.py
+# @Software: PyCharm
 
-define("src", default='app', help="run on the given src", type=str)
-define("env", default='local', help="run on the given env", type=str)
-options.parse_command_line()
-src = options.src
-env = options.env
+import os
+import re
+from os.path import expanduser
 
-server_port = str(8080)
-server = '127.0.0.1'
+bash_rc = ''
+if os.path.exists(expanduser("~/.bashrc")):
+    with open(expanduser("~/.bashrc")) as f:
+        bash_rc += f.read()
 
-# 环境配置
-if env == 'prod':
-    dbConfig = Config.get('config-prod', 'mysql')
-    rdbConfig = Config.get('config-prod', 'redis')
-    server_debug = False
-    BaseUrl = "http://"+server+":"+server_port+"/"
-    server_port = str(int(server_port) + 6)
+if os.path.exists(expanduser("~/.bash_profile")):
+    with open(expanduser("~/.bash_profile")) as f:
+        bash_rc += f.read()
 
-elif env == 'dev':
-    dbConfig = Config.get('config-dev', 'mysql')
-    rdbConfig = Config.get('config-dev', 'redis')
-    server_debug = True
-    server_port = str(int(server_port) + 5)
-    BaseUrl = "http://"+server+":"+server_port+"/"
+match = re.search(r'vision_CMS_ENV=(.+)', bash_rc)
+env = match.group(1) if match else 'default'
 
+if env == 'DEV':
+    from conf.dev import *
+elif env == 'PROD':
+    from conf.prod import *
 else:
-    dbConfig = Config.get('config', 'mysql')
-    rdbConfig = Config.get('config', 'redis')
-    server_debug = True
-    BaseUrl = "http://" + server + ":" + server_port + "/"
-
-db = dbConfig.get('db')
-host = dbConfig.get('host')
-passwd = dbConfig.get('password')
-port = dbConfig.get('port')
-user = dbConfig.get('user')
-charset = 'utf8'
-
-# sqlalchemy_db = "postgresql+psycopg2://" + user + ":" + passwd + "@" + host + "/" + db
-sqlalchemy_db = "postgresql+psycopg2://{0}:{1}@{2}/{3}" .format(user, passwd, host, db)
-
-redis_db = rdbConfig.get('db')
-redis_host = rdbConfig.get('host')
-redis_port = rdbConfig.get('port')
+    from conf.base import *
 
 print("=========== start ===========")
-print("src == " + src)
 print("env == " + env)
-print("db_host == " + host)
-print("db == " + db)
-print("redis_host == " + redis_host)
+print("postgresql_vision == " + pg_host)
+print("postgresql_vision_db == " + pg_db)
+print("redis == " + redis_host)
 print("redis_db == " + str(redis_db))
 print("server port == " + str(server_port))

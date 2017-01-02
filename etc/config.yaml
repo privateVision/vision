@@ -1,12 +1,40 @@
-mysql:
-    host: localhost
-    port: 5432
-    db: vision
-    user: vision
-    password: 'vision'
+postgresql:
+    default:
+        host: localhost
+        port: 5432
+        db: vision
+        user: vision
+        password: 'vision2017'
+
+    dev:
+        host: '127.0.0.1'
+        port: 5432
+        db: vision
+        user: vision
+        password: 'vision2017'
+
+    prod:
+        host: '192.168.20.100'
+        port: 5432
+        db: vision
+        user: visionsa
+        password: 'Xm.u7!nebio2'
 
 redis:
-    # redis库，默认为0
-    db: 0
-    host: localhost
-    port: 6379
+    default:
+        # redis库，默认为0
+        db: 0
+        host: localhost
+        port: 6379
+
+    dev:
+        # redis库，默认为1
+        db: 1
+        host: localhost
+        port: 6379
+
+    prod:
+        # redis库，默认为0
+        db: 1
+        host: '192.168.20.110'
+        port: 6379
