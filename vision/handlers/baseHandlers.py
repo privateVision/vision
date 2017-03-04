@@ -1,15 +1,17 @@
 # -*- coding:utf-8 -*-
-import tornado.web
-import functools
 import traceback
+from tornado.web import RequestHandler
 from tornado import escape
 from tornado.escape import utf8
 from tornado.util import unicode_type
 from public import log
 from utils import session
 
+class UTILMixin(object):
+    pass
+
 # Handlers 共享的 Handler 方法。API 使用不正确错误处理
-class BaseHandler(tornado.web.RequestHandler):
+class BaseHandler(RequestHandler, UTILMixin):
     def __init__(self, *args, **kwargs):
         super(BaseHandler, self).__init__(*args, **kwargs)
         self.session = session.Session(self.application.session_manager, self)
@@ -47,35 +49,3 @@ class BaseHandler(tornado.web.RequestHandler):
         else:
             self.write(str(status_code))
             self.finish()
-
-
-# 图片 - 静态文件读取加查找文件路径错误处理
-class ImageHandler(tornado.web.StaticFileHandler):
-    """docstring for ImageHandler"""
-
-    def write_error(self, status_code, **kwargs):
-        if status_code == 500:
-            self.render('common/500.html')
-        elif status_code == 404:
-            self.render('common/404.html')
-        else:
-            self.write(str(status_code))
-            self.finish()
-
-
-# 文件 - 静态文件读取加查找文件路径错误处理
-class StaticHandler(tornado.web.StaticFileHandler):
-    def get(self, path, include_body=True):
-        self.set_header("Access-Control-Allow-Origin", "*")
-        super(StaticHandler, self).get(path, include_body)
-
-    def write_error(self, status_code, **kwargs):
-        self.finish({str(status_code): "a nicer message!"})
-
-
-# 错误 API 链接处理
-class ErrorLinkHandler(BaseHandler):
-    """docstring for ErrorLinkHandler"""
-
-    def get(self):
-        self.render('common/404.html')
