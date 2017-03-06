@@ -16,7 +16,7 @@ class Application(tornado.web.Application):
         self.base_dir = os.path.dirname(__file__)
         settings = dict(
             debug=server_debug,
-            default_handler_class=base.ErrorLinkHandler,
+            # default_handler_class=base.ErrorLinkHandler,
             template_path=os.path.join(self.base_dir, "templates"),
             static_path=os.path.join(self.base_dir, "static"),
             cookie_secret='1ks1tuCW3x0lU14H3m0CV39Q288rVkc9113ieivhYi610E0i4fRhB6u5VhiZRu72',
