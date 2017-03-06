@@ -14,3 +14,4 @@ dump.rdb
 *.pid
 *.db
 *.swp
+!/vision/static/assets/*

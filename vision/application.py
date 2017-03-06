@@ -17,7 +17,7 @@ class Application(tornado.web.Application):
         settings = dict(
             debug=server_debug,
             # default_handler_class=base.ErrorLinkHandler,
-            template_path=os.path.join(self.base_dir, "templates"),
+            template_path=os.path.join(self.base_dir, "handlers/app" if server_debug else "templates"),
             static_path=os.path.join(self.base_dir, "static"),
             cookie_secret='1ks1tuCW3x0lU14H3m0CV39Q288rVkc9113ieivhYi610E0i4fRhB6u5VhiZRu72',
             session_secret="3cdcb1f00803b6e78ab50b466a40b9977db396840c28307f428b25e2277f1bcc",
