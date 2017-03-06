@@ -1,10 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "../../base/template/appbase.html" %}
 
-</body>
-</html>
+{% block link %}
+<link rel="stylesheet" href="/static/app/vision/css/vision.css">
+{% end %}
+
+{% block nav_collapse %}
+<ul>
+    <li>
+        <a>视角</a>
+    </li>
+    <li>
+        <a>交流</a>
+    </li>
+</ul>
+{% end %}
+
+{% block body %}
+{% end %}

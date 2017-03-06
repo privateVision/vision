@@ -4,3 +4,10 @@
 # @Site    : vision
 # @File    : url.py
 # @Software: PyCharm
+from handlers.app.vision.handler import VisionHandler
+
+
+urlpattern = (
+    ("/?", VisionHandler),
+    ("/vision/?", VisionHandler),
+)

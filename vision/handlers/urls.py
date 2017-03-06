@@ -1,11 +1,12 @@
 # -*- coding: utf-8 -*-
+from handlers.app.vision.url import urlpattern as vision_url
 
-# from utils.urls import include
+from baseHandlers import BaseHandler
 
-urls = [
-    #     url(r"/", HomeHandler),
-    #     url(r"/docs", DocsHandler),
-    #     url(r"/docs/version/(.*)", web.StaticFileHandler,
-    #         {"path": settings.DOCS_ROOT}),
-    #     (r"/static/(.*)", StaticHandler),
-]
+urlpattern = ()
+
+urlpattern += vision_url
+
+urlpattern += (
+    (r'.*', BaseHandler),
+)
