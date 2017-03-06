@@ -4,7 +4,6 @@ import os
 import redis
 import tornado.web
 
-from handlers import baseHandlers as base
 from handlers.urls import urlpattern
 from settings import redis_db, redis_host, redis_port, server_debug
 from utils import session
@@ -16,7 +15,6 @@ class Application(tornado.web.Application):
         self.base_dir = os.path.dirname(__file__)
         settings = dict(
             debug=server_debug,
-            # default_handler_class=base.ErrorLinkHandler,
             template_path=os.path.join(self.base_dir, "handlers/app" if server_debug else "templates"),
             static_path=os.path.join(self.base_dir, "static"),
             cookie_secret='1ks1tuCW3x0lU14H3m0CV39Q288rVkc9113ieivhYi610E0i4fRhB6u5VhiZRu72',
