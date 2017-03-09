@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <title>VISION</title>
-    <link rel="icon" type="image/x-icon" href="{{ static_url('logo.ico') }}">
+    <link rel="icon" type="image/x-icon" href="/static/logo.ico">
 
     <!-- build:baseCss -->
-    <link rel="stylesheet" href="{{ static_url('assets/bootstrap/dist/css/bootstrap.css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="/static/assets/bootstrap/dist/css/bootstrap.min.css">
     <!-- endbuild -->
 
     {% block link %}
     {% end %}
-    <link rel="stylesheet" href="{{ static_url('app/base/css/base.css') }}">
+    <link rel="stylesheet" href="/static/app/base/css/base.css">
 
-    <script type="text/javascript" src="{{ static_url('assets/jquery/dist/jquery.js/jquery.min.js') }}"></script>
+    <script type="text/javascript" src="/static/assets/jquery/dist/jquery.min.js"></script>
     {% block app_base_script_link %}
     {% end %}
 
@@ -39,7 +39,7 @@
 {% end %}
 
 <!-- build:base_js -->
-<script type="application/javascript" src="{{ static_url('assets/bootstrap/dist/js/bootstrap.js/bootstrap.min.js') }}" defer></script>
+<script type="application/javascript" src="/static/assets/bootstrap/dist/js/bootstrap.min.js" defer></script>
 <!-- endbuild -->
 
 {% block javascript_in_body %}

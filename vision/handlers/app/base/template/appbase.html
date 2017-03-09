@@ -1,36 +1,36 @@
 {% extends "base.html" %}
 
 {% block appbase_script_link %}
-<link rel="stylesheet" href="{{ static_url('app/base/css/theme/default.css' }}">
+<link rel="stylesheet" href="/static/app/base/css/theme/default.css">
 
 <!-- build:appbasejs -->
 <!-- endbuild -->
 {% end %}
 
 {% block navbar %}
-<div class="navbar navbar-fixed-top">
-    <div class="gradientBar"></div>
-    <div class="navbar-inner">
-        <div class="container">
+<div class="">
+    <div class=""></div>
+    <div class="">
+        <div class="">
             <div class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </div>
             <a class="brand" href="/">
-                <img src="{{ static_url('img/logo.png') }}">
+                <img src="/static/img/logo.png">
             </a>
             <div class="nav-collapse" id="nav-toolbar">
                 {% block nav_collapse %}
                 <ul class="nav">
                     <li>
-                        <a href="/community">
-                            社区
+                        <a href="/vision">
+                            视角
                         </a>
                     </li>
                     <li>
                         <a href="/share">
-                            分享
+                            交流
                         </a>
                     </li>
                 </ul>
